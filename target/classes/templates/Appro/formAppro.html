@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Formulaire d'ajout d'un approvisinnement.</h2>
+    <form th:action="@{/Appro/Save}" method="post">
+        <select name="article_id" required>
+            <option value="">...selectionner un article </option>
+            <option th:each="appro:${listeArticles}"
+                    th:value="${appro.id}"
+                    th:text="${appro.libelle}">
+            </option>
+        </select>
+        <div class="Form-group">
+            <label>Quantite appro</label>
+            <input type="number" class="Form-control" name="qteAppro">
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

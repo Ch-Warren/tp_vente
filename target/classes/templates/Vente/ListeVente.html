@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vente</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Liste des Ventes</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Article</th>
+            <th>Qte Vente</th>
+            <th>Date Vente</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Vente:${listeVente}">
+            <td th:text="${Vente.id}"></td>
+            <td th:text="${Vente.article.libelle}"></td>
+            <td th:text="${Vente.qteVente}"></td>
+            <td th:text="${Vente.dateVente}"></td>
+            <td>
+                <a th:href="@{/vente/edite/{id}(id=${Vente.id})}">Editer | </a>
+                <a th:href="@{/vente/delete/{id}(id=${Vente.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

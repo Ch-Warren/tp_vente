@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Formulaire de mise a jour d'un approvisionnement.</h2>
+    <form th:action="@{/Appro/update}" th:object="${un_Appro}" method="post">
+        <div class="Form-group">
+            <input type="hidden" th:field="*{id}" class="Form-control">
+            <input type="hidden" th:field="*{dateAppro}" class="Form-control">
+        </div>
+        <div class="">
+            <label>Article</label>
+            <select th:field="*{article_id}"  required>
+                <option th:each="cat:${listeArticles}"
+                        th:value="${cat.id}"
+                        th:utext="${cat.libelle}">
+                </option>
+            </select>
+        </div>
+        <div class="Form-group">
+            <label>Qantite Approvisionnement</label>
+            <input type="text" th:field="*{qteAppro}" class="Form-control" >
+        </div>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
